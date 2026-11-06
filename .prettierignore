@@ -1,0 +1,10 @@
+node_modules/
+dist/
+deploy/site/
+deploy/supabase/
+deploy/nginx.conf
+deploy/security-headers.conf
+deploy/build-info.json
+deploy/SUPABASE-SETUP.md
+*.zip
+.env*

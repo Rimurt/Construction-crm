@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.supabase/
+*.log
+*.zip
+deploy/site/
+deploy/supabase/
+deploy/nginx.conf
+deploy/security-headers.conf
+deploy/build-info.json
+deploy/SUPABASE-SETUP.md
+.DS_Store
+Thumbs.db

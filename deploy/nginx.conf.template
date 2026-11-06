@@ -1,0 +1,39 @@
+# Отдельный виртуальный хост CRM. HTTPS добавляет Certbot после настройки DNS.
+server {
+    listen 80;
+    server_name __CRM_DOMAIN__;
+    root /srv/construction-crm/current;
+    index index.html;
+    server_tokens off;
+
+    include /etc/nginx/snippets/construction-crm-security.conf;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/letsencrypt;
+        default_type text/plain;
+        try_files $uri =404;
+    }
+
+    location ~ /\. {
+        deny all;
+    }
+
+    # Главная страница не кешируется: при обновлении она ссылается на новый JS.
+    location = /index.html {
+        add_header Cache-Control "no-store" always;
+        include /etc/nginx/snippets/construction-crm-security.conf;
+        try_files $uri =404;
+    }
+
+    # У собранных файлов есть хеш в имени; отсутствующий JS не заменяем HTML.
+    location /assets/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        include /etc/nginx/snippets/construction-crm-security.conf;
+        try_files $uri =404;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
