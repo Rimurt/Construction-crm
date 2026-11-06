@@ -55,14 +55,4 @@ npm run build:deploy -- 2b-test.duckdns.org
 - `tests/`, `.github/workflows/ci.yml` — автоматические проверки.
 - `scripts/build-deploy.mjs`, `deploy/` — подготовка и установка сборки nginx.
 
-## Инструкции и решения
 
-[Подключение Supabase](docs/SUPABASE-SETUP.md) · [VPS: PuTTY/WinSCP](deploy/README.md) ·
-[GitHub](docs/GITHUB.md) · [Объяснение для руководителя](docs/EXPLANATION.md) ·
-[Модель и допущения](docs/PLAN.md) · [Проверка адресов](docs/ADDRESS-SEARCH.md).
-
-Автоматические SQL-тесты воспроизводят роли и `auth.uid()` на отдельной PostgreSQL;
-облачные входы, отключение регистрации и прямые запросы с реальными JWT проверяются
-отдельно перед сдачей. Подсказки адресов проверяются в форме по OpenStreetMap,
-не по официальному ФИАС. Большие объёмы, Realtime, загрузка файлов и восстановление
-пароля в этот объём не включены. При подготовке использовался ИИ.
